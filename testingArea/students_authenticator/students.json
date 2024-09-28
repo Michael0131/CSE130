@@ -1,0 +1,31 @@
+{
+    "students": [
+      {
+        "name": "Alice",
+        "registration_key": "AL123",
+        "grades": {
+          "Math": "A",
+          "English": "B+",
+          "Science": "A-"
+        }
+      },
+      {
+        "name": "Bob",
+        "registration_key": "BO456",
+        "grades": {
+          "Math": "B",
+          "English": "C+",
+          "Science": "B+"
+        }
+      },
+      {
+        "name": "Charlie",
+        "registration_key": "CH789",
+        "grades": {
+          "Math": "A+",
+          "English": "A",
+          "Science": "A"
+        }
+      }
+    ]
+  }
