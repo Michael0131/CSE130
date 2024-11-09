@@ -1,3 +1,21 @@
+# 1. Name:
+#      Michael Johnson
+# 2. Assignment Name:
+#      Lab 08: Sort
+# 3. Assignment Description:
+#      This program reads a JSON file containing a list of names, sorts them alphabetically using a custom selection sort algorithm, 
+#      and displays the sorted list. The sorting algorithm was implemented manually to meet the assignment requirements, and assertions 
+#      were added to handle potential errors such as missing keys, empty lists, and invalid data types.
+# 4. What was the hardest part? Be as specific as possible.
+#      The hardest part of this assignment was ensuring that the sorting algorithm was implemented according to my pseudocode without 
+#      using Python's built-in sort functions. It required careful consideration to handle various edge cases, such as empty lists and 
+#      non-string elements, which could cause errors. Adding assertions to catch these issues helped reinforce error handling but required 
+#      me to think carefully about where potential errors might occur in the program's flow. Overall, translating my pseudocode directly 
+#      into Python code while maintaining readability and accuracy was challenging but rewarding.
+# 5. How long did it take for you to complete the assignment?
+#      Approximately 3 hours, including reading the assignment instructions, writing the pseudocode, implementing the program, and debugging any issues, along with recording and publishing.
+
+
 import json
 
 # Get the filename from user input
