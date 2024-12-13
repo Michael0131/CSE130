@@ -8,14 +8,13 @@
 #      Handling multiple edge cases (e.g., file format validation, invalid JSON structures, and incorrect subarray sizes) while maintaining clear and efficient code was challenging.
 # 5. How long did it take for you to complete the assignment?
 #      3 hours.
-import time
 import json
 import os
 
 def read_power_data(filename):
     # Validate and read power data from a JSON file
     assert isinstance(filename, str), "Filename must be a string"
-    assert os.path.exists(filename), "File does not exist"
+    assert os.path.exists(filename), "File does not exist n Error file must be JSON"
 
     with open(filename, 'r') as file:
         data = json.load(file)
@@ -26,46 +25,33 @@ def read_power_data(filename):
 
     return power_data
 
-def calculate_max_average(power_data, subarray_size):
-    # Calculate the maximum average of a subarray of the specified size using a sliding window
+def calculate_average(power_data, subarray_size):
+    # Calculate the average power of a subarray of the specified size
     assert isinstance(power_data, list), "Power data must be a list"
     assert all(isinstance(i, int) for i in power_data), "Power data must contain integers"
     assert isinstance(subarray_size, int), "Subarray size must be an integer"
     assert subarray_size > 0, "Subarray size must be greater than zero"
     assert len(power_data) >= subarray_size, "Subarray size is larger than the dataset"
 
-    current_sum = sum(power_data[:subarray_size])  # Initial sum of the first subarray
-    max_average = current_sum / subarray_size
-    best_subarray = power_data[:subarray_size]
+    total_sum = sum(power_data[:subarray_size])  # Sum of the first subarray
+    average = total_sum / subarray_size
 
-    for i in range(subarray_size, len(power_data)):
-        # Update the sum by removing the first element of the previous subarray and adding the next element
-        current_sum = current_sum - power_data[i - subarray_size] + power_data[i]
-        assert current_sum >= 0, "Sum calculation error"
-        
-        current_average = current_sum / subarray_size
-        if current_average > max_average:
-            max_average = current_average
-            best_subarray = power_data[i - subarray_size + 1:i + 1]
+    return average
 
-    return max_average, best_subarray
+try:
+    # Prompt user for file name and subarray size
+    filename = input("Enter the name of the file containing power data: ")
+    power_data = read_power_data(filename)  # Load power data from the file
 
-while True:
-    try:
-        # Prompt user for file name and subarray size
-        filename = input("Enter the name of the file containing power data: ")
-        power_data = read_power_data(filename)  # Load power data from the file
+    subarray_size = int(input("Enter the size of the subarray: "))
 
-        subarray_size = int(input("Enter the size of the subarray: "))
+    average_power = calculate_average(power_data, subarray_size)  # Calculate the average
 
-        max_average, best_subarray = calculate_max_average(power_data, subarray_size)  # Calculate results
+    print(f"Average power: {average_power}")  # Display the average power
 
-        print(f"Maximum average: {max_average}")  # Display the maximum average
-        print(f"Best subarray: {best_subarray}")  # Display the subarray corresponding to the maximum average
+except AssertionError as e:
+    print(f"Error: {e}")
+except ValueError:
+    print("Invalid input. Subarray size must be an integer.")
 
-        time.sleep(3)  # Wait for 3 seconds before restarting the loop
 
-    except AssertionError as e:
-        print(f"Error: {e}. Please try again.")
-    except ValueError:
-        print("Invalid input. Subarray size must be an integer. Please try again.")
