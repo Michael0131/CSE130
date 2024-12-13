@@ -8,7 +8,7 @@
 #      Handling multiple edge cases (e.g., file format validation, invalid JSON structures, and incorrect subarray sizes) while maintaining clear and efficient code was challenging.
 # 5. How long did it take for you to complete the assignment?
 #      3 hours.
-
+import time
 import json
 import os
 
